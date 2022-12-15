@@ -1,0 +1,25 @@
+
+
+/************************************************   Poc of Permenent Delete  ********************************************************/
+ 
+
+
+ let D = IsDelete            // Data is Deleted or not
+ let R = IsRecover           // Delete data but user can recover in future.
+ let P = IsPermenentDelete   // Data should be permenent deleted but will be placed in the database.
+
+
+     User Table                 Deleted User Table 
+						   
+UserId  Data   D   R   P        DeletedUserId  Data   P
+			        	       	  	
+   1    12     Y   N   N           1            12    Y
+   2    43     N   Y   N           2            43    N
+   3    69     N   Y   N           3            69    N
+   4    35     N   Y   N           4            35    N
+   5    84     N   Y   N           5            84    N
+
+
+1. If "IsDelete" is N then user will able to see the data. (By default "IsDelete" will be N)
+2. Suppose User delete the record then "IsDelete" will be the Y and "IsRecover" will be N.
+3. 

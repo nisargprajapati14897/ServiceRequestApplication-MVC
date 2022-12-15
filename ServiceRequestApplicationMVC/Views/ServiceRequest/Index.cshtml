@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ServiceRequestApplicationMVC.Models.ServiceRequest>
+
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script type="text/javascript">
+    function functionConfirm(event) {
+        swal({
+            title: 'Are you sure ?',
+            text: "You will not be able to recover this item",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'No',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Yes',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $('form').submit();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }
+</script>*@
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success btn-large" })
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceRequestId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnquiryPurpose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceRequestId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnquiryPurpose)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { ServiceRequestId = item.ServiceRequestId }, new { @class = "btn btn-primary btn-sm" })
+                @*@Html.ActionLink("Details", "Details", new { ServiceRequestId = item.ServiceRequestId }) |*@
+                @*<form asp-action="Delete" asp-route-id="@item.ServiceRequestId" method="post">
+                    @Html.ActionLink("Delete", "Delete", new { ServiceRequestId = item.ServiceRequestId }, new { @class = "btn btn-danger btn-sm", onclick = "return functionConfirm(this)" })
+                </form>*@
+                @Html.ActionLink("Delete", "Delete", new { ServiceRequestId = item.ServiceRequestId }, new { @class = "btn btn-danger btn-sm", onclick = "return confirm('Are sure wants to delete?');" })
+</td>
+        </tr>
+    }
+
+</table>
